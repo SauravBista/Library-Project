@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,8 @@
     <style>
         body {
             padding-top: 56px;
-            background-color: #f7f3e9; /* Warm, light background color */
-            font-family: 'Georgia', serif; /* Classic font for a library feel */
+            background-color: #f7f3e9;
+            font-family: 'Georgia', serif;
             color: #333333;
             font-size: 1.1rem;
             line-height: 1.6;
@@ -21,15 +22,23 @@
         }
 
         h1 {
-            color: #8b4513; /* Dark brown color for header */
+            color: #8b4513;
             font-size: 2.5rem;
-            text-shadow: 1px 1px #d2b48c; /* Subtle shadow for depth */
+            text-shadow: 1px 1px #d2b48c;
             margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #333;
+            text-align: center;
+            margin-bottom: 40px;
         }
 
         .row {
             display: flex;
             flex-wrap: wrap;
+            justify-content: space-around;
             margin: -10px;
         }
 
@@ -40,11 +49,15 @@
         }
 
         .card {
-            background-color: #fffaf0; /* Light parchment color */
-            border: 2px solid #d2b48c; /* Tan border */
+            background-color: #fffaf0;
+            border: 2px solid #d2b48c;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
         }
 
         .card-body {
@@ -67,6 +80,8 @@
         .card-text {
             font-size: 1rem;
             color: #333333;
+            margin-bottom: 15px;
+            min-height: 3rem; /* Ensures all cards have at least this much height */
         }
 
         .btn {
@@ -81,7 +96,7 @@
         }
 
         .btn-edit {
-            background-color: #f4a460; /* Sandy brown for Edit button */
+            background-color: #f4a460;
             color: #fff;
         }
 
@@ -91,7 +106,7 @@
         }
 
         .btn-delete {
-            background-color: #cd5c5c; /* Indian red for Delete button */
+            background-color: #cd5c5c;
             color: #fff;
         }
 
@@ -101,13 +116,13 @@
         }
 
         .btn-add {
-            background-color: #8b4513; /* Saddle brown for Add button */
+            background-color: #8b4513;
             color: #fff;
             font-size: 1.2rem;
             padding: 12px 24px;
             border-radius: 8px;
             text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .btn-add:hover {
@@ -116,7 +131,7 @@
         }
 
         .alert-info {
-            background-color: #f0e68c; /* Khaki background for alert */
+            background-color: #f0e68c;
             color: #8b4513;
             border: 1px solid #d2b48c;
             padding: 15px;
@@ -134,10 +149,12 @@
         }
     </style>
 </head>
+
 <body>
-    
+
     <div class="container">
         <h1 class="mb-4 text-center">My Library</h1>
+        <h2>These are the books I've read so far. I'm excited to read new books, learn more, and expand this list to help you!</h2>
         <div class="row">
             {% if books %}
                 {% for book in books %}
@@ -155,16 +172,21 @@
                     </div>
                 {% endfor %}
             {% else %}
-                <div class="alert alert-info text-center" role="alert">
+                <div class="alert-info text-center" role="alert">
                     No books available in the library.
                 </div>
             {% endif %}
         </div>
 
-        <!-- Add New Book Button -->
         <div class="text-center mt-4">
             <a href="{{ url_for('add') }}" class="btn btn-add">Add New Book</a>
         </div>
+
+        <footer class="text-center mt-4">
+            <p>Saurav Bista</p>
+        </footer>
     </div>
+
 </body>
+
 </html>
