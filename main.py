@@ -12,6 +12,7 @@ class Book(db.Model):
     title = db.Column(db.String(100), nullable=False)
     author = db.Column(db.String(100), nullable=False)
     rating = db.Column(db.Float, nullable=False)
+    note = db.Column(db.String(100), nullable=True)
 
 @app.route('/')
 def home():
@@ -24,7 +25,8 @@ def add():
         new_book = Book(
             title=request.form["title"],
             author=request.form["author"],
-            rating=request.form["rating"]
+            rating=request.form["rating"],
+            note=request.form["note"]
         )
         db.session.add(new_book)
         db.session.commit()
